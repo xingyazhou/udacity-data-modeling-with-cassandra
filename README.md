@@ -62,43 +62,46 @@ With Apache Cassandra, the database tables are modelled on the requested queries
 **1. Give me the artist, song title and song's length in the music app history that was heard during sessionId = 338, and itemInSession = 4**<br>
 
 ```
-Create table music_library1
+Create table sessions
     (
+        sessionId int,
+        itemInSession int,
         artist_name text,
         song text,
         song_length float,
-        sessionId int,
-        itemInSession int,
-        PRIMARY KEY (sessionId, itemInSession))
-    );
+        PRIMARY KEY (sessionId, itemInSession)  
+    ) WITH CLUSTERING ORDER BY (itemInSession DESC)
 ```
 
 **2. Give me only the following: name of artist, song (sorted by itemInSession) and user (first and last name) for userid = 10, sessionid = 182**<br>
 
 ```
-Create table music_library2
+Create table song_play_list
     (
         userid int,
-        firstname text,
-        lastname text,
         sessionid int,
-        artist_name text,
-        song text,
         iteminsession int,
-        PRIMARY KEY(userid, sessionid, iteminsession)) WITH CLUSTERING ORDER BY (sessionid DESC, iteminsession DESC)
-    );
+        firstname text,
+        lastname text,      
+        artist_name text,
+        song text,     
+        PRIMARY KEY((userid, sessionid), iteminsession)
+     ) WITH CLUSTERING ORDER BY (iteminsession DESC)
+
 ```
+
     
 **3. Give me every user name (first and last) in my music app history who listened to the song 'All Hands Against His Own'**<br>
 
 ```
-Create table music_library3
+Create table users_playlist 
     (
+        song text,
+        user_id,
         firstname text,
         lastname text,  
-        song text,
-        PRIMARY KEY (song, firstname, lastname))  WITH CLUSTERING ORDER BY ( firstname DESC, lastname DESC)
-    );
+        PRIMARY KEY (song, user_id)  
+    ) WITH CLUSTERING ORDER BY (user_id DESC)
 ```
 
 ## Build ETL Pipeline
@@ -114,12 +117,14 @@ Create table music_library3
 
 ## Project Files
 
-In addition to the data files, the project workspace includes 2 files:
+In addition to the data files, the project workspace includes 3 files:<br>
+**1. Project_1B_ Project_Template.ipynb**                project template <br>
 
-**1. Project_1B_ Project_Template.ipynb**  create a denormalized dataset, load the data into tables and run queries <br>
+
+**2. Project_1B_ Data_Modelling_With_Cassandra.ipynb**  Create a denormalized dataset, load the data into tables and run test queries <br>
 
 
-**2. README.md**                           provides project info<br>
+**3. README.md**                                        Provide project info <br>
 
 
 ## Author
