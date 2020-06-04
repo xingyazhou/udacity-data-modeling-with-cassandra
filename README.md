@@ -106,13 +106,10 @@ Create table users_playlist
 
 ## Build ETL Pipeline
 
-**1. Include Apache Cassandra *CREATE* statements to create relevant tables for the above data model** 
+**1. Include Apache Cassandra *INSERT* statements to load processed records into relevant tables from dataset *event_datafile_new.csv***
 
 
-**2. Include Apache Cassandra *INSERT* statements to load processed records into relevant tables from dataset *event_datafile_new.csv***
-
-
-**3. Add in the *SELECT* statement to verify the data was entered into the table**
+**2. Add in the *SELECT* statement to verify the data was entered into the table**
 
 
 ## Project Files
