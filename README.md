@@ -118,10 +118,11 @@ Create table users_playlist
 ## Project Files
 
 In addition to the data files, the project workspace includes 3 files:<br>
-**2. Project_1B_ Data_Modelling_With_Cassandra.ipynb**  Create a denormalized dataset, load the data into tables and run test queries <br>
+
+**1. Project_1B_ Data_Modelling_With_Cassandra.ipynb**  Create a denormalized dataset, load the data into tables and run test queries <br>
 
 
-**3. README.md**                                        Provide project info <br>
+**2. README.md**                                        Provide project info <br>
 
 
 ## Author
